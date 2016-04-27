@@ -63,7 +63,6 @@ function mousePressed() {
         saveSound(soundFile, 'soundFile.wav');
 
         // Display and save the text
-        console.log('typeof speech.resultString: ', typeof speech.resultString);
         save(speech.resultString, 'soundTranscript.txt');
 
         // Increment the state
