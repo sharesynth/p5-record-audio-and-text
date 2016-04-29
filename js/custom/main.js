@@ -18,6 +18,7 @@ function setup() {
     recorder.setInput(mic);
     soundFile = new p5.SoundFile();
     speech = new p5.SpeechRec();
+    speech.onResult = showResult;
 }
 
 function mousePressed() {
@@ -38,18 +39,13 @@ function mousePressed() {
         speech.continuous = false;
         state++;
 
-    } else if (state === 2) {
-
-        soundFile.play();
-        saveSound(soundFile, 'soundFile.wav');
-        save(speech.resultString, 'soundTranscript.txt');
-        text(speech.resultString, width / 2, height / 2);
-        state++;
     }
 }
 
 function showResult() {
     if (speech.resultValue === true) {
-        text(speech.resultString, width / 2, height / 2);
+        soundFile.play();
+        saveSound(soundFile, 'soundFile.wav');
+        save([speech.resultString], 'soundTranscript.txt');
     }
 }
